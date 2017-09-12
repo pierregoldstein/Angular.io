@@ -1,0 +1,68 @@
+<p>There are {{totalCarParts()}} total parts in stock</p>
+<!-- <ul>
+    <li *ngFor="let carpart of carparts">
+        <h2>{{carpart.name | uppercase}}</h2>
+        <div class="photo">
+            <img [src]="carpart.image" />
+        </div>
+        <p class="description">{{carpart .description}}</p>
+        <p class="price">Price: {{carpart.price | currency: 'USD':true}}</p>
+        <p *ngIf="carpart.instock > 0">Instock: {{carpart.instock}}</p>
+        <p class="outofstock" *ngIf="carpart.instock === 0"><i>Out of Stock</i></p>
+    </li>
+</ul> -->
+
+<!-- <li class="card" *ngFor="let carpart of carparts" [class.featured]="carpart.featured"> -->
+<li class="card" *ngFor="let carpart of carparts">
+    <div class="panel-body">
+        <table class="poduct-info">
+            <tr>
+                <td>
+                    <!--<div [hidden]="!user.isAdmin">Secret</div>
+                    <buttton [disabled]="isDisabled">Purchase</button>
+                    <img [alt]="image.description" />-->
+                    <img [src]="carpart.image" />
+                    <h2>{{carpart.name | uppercase}}</h2>
+                    <p class="description">{{carpart .description}}</p>
+                    <p class="price">Price: {{carpart.price | currency: 'USD':true}}</p>
+                    <div class="select-quantity">
+                        <button class="decrease" (click)="downQuantity(carpart)">-</button>
+                        <!-- Two-way binding
+                        <input class="number" type="text" [value]="carpart.quantity" (input)="carpart.quantity=$event.taget.value"> -->
+                        <input class="number" type="text" [(ngModel)]="carpart.quantity">
+                        <!-- Used for component proerties, not methods
+                        [(ngModel)]="user.age"
+                        [(ngModel)]="firstName"
+                        **not**
+                        [(ngModel)]="fullname" -->
+                        <button class="increase" (click)="upQuantity(carpart)">+</button>
+                    </div>
+                    <p class="inventory" *ngIf="carpart.instock > 0">Instock: {{carpart.instock}}</p>
+                    <p class="outofstock" *ngIf="carpart.instock === 0"><i>Out of Stock</i></p>
+                </td>
+                <br/>
+                <!-- <td class="price">{{carpart.price | currency: 'USD':true}}</td> -->
+            </tr>
+        </table>
+    </div>
+</li>
+<!-- Any 'on' event can be listened to with '()'
+<div (mouseover)="call()">
+    <input (blur)="call()"/>
+    <input (focus)="call()"/>
+    <input type="text" (keydown)="call()"/>
+    <form (submit)="call()"/>
+</div> -->
+
+<!-- Getting additional event 
+<input type="text" (keydown)="showKey($event)"/>
+<script>
+    //to be put in a .ts file
+    showKey(event){
+        alert(event.keycode);
+    }
+    getCoord(event){
+        console.log(event.clientX+":"+event.clientY);
+    }
+</script>
+<h2 (mouseover)="getCoord($event)">Hover me</h2> -->
